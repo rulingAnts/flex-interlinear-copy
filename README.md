@@ -20,7 +20,7 @@ The tool cleans the raw TSV data and provides one-click conversion to **LaTeX**,
 
 For Windows users, the tool is distributed as a single, portable executable file (built with PyInstaller's `--onefile --windowed` options). **No installation is required—just download and run.**
 
-* **Download:** [Portable FLEx Converter EXE (x64)](https://drive.google.com/file/d/1Ah1oBeynWNVLF5ytAvpsTJwSWM2jyuPh/view?usp=sharing)
+* **Download:** [FLEx Interlinear Copy Assistant](https://drive.google.com/file/d/1Ah1oBeynWNVLF5ytAvpsTJwSWM2jyuPh/view?usp=sharing)
 * **Usage:** Download the file and double-click to run.
 
 ### Option 2: Running from Source (macOS, Linux, and Windows)
