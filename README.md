@@ -27,14 +27,14 @@ For Windows users, the tool is distributed as a single, portable executable file
 
 This tool is written in Python 3. To run it directly from the source code, you must have Python 3 and the `pyperclip` dependency installed.
 
-1.  **Download:** Clone this repository or download the `simple-flex_il_clipboard_convert.py` file.
+1.  **Download:** Clone this repository or download the `flex-interlinear-copy.py` file.
 2.  **Install Dependency:**
     ```bash
     pip install pyperclip
     ```
 3.  **Run the script:**
     ```bash
-    python simple-flex_il_clipboard_convert.py
+    python3 flex-interlinear-copy.py
     ```
 
 ## ⚠️ Major Development Targets
@@ -53,10 +53,7 @@ We are actively seeking contributors to implement the following high-priority fe
 4.  **MS Word MathML Implementation:**
     * **Goal:** Research and implement a robust method for outputting the data as **Microsoft Word MathML** for clean interlinear display in Word documents.
     * **Constraint:** This feature is currently disabled in the GUI and will probably always be **inaccessible on macOS**. Implementation must focus on platform-specific methods for **Windows** that can correctly place the complex MathML data onto the clipboard, potentially requiring system APIs beyond standard Python libraries. MathML also turns out to be very difficult to work with outside of Word.
-5.  **macOS/Linux Standalone Packaging:**
-    * **Goal:** Create single-file, portable application bundles for macOS (`.app`) and Linux (e.g., AppImage).
-    * **Constraint:** The goal is a simple, lightweight bundle (under 25MB) that runs without manual dependency installation. This will be very complicated as it will need to include logic to download and install dependences inside the app bundle on the first run.
-6. **Windows Bootstrapper/Network Installer (probably using an NSIS or similar installer script):**
+5. **Windows Bootstrapper/Network Installer (probably using an NSIS or similar installer script):**
     * **Goal:** Create an easy to use Windows installer that is under 25MB that works by downloading and installing python and dependencies to the app install directory and then creating a start menu shortcut that will run the app.
     * **Constraint:** The goal is a simple, lightweight bundle (under 25MB) that can be hosted directly in the GitHub repository, which looks a lot less sketchy and is also a more user friendly experience.
 
