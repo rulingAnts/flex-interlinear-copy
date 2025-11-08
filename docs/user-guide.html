@@ -171,6 +171,33 @@
                 with XeLaTeX or LuaLaTeX compilers.
             </p>
 
+            <h4>Using Overleaf.com:</h4>
+            <p>
+                <a href="https://www.overleaf.com" target="_blank">Overleaf</a> is a popular online LaTeX editor 
+                that works well with the FLEx Interlinear Copy Assistant output. Here's how to configure it:
+            </p>
+
+            <ol>
+                <li>Create a new project or open an existing one in Overleaf</li>
+                <li><strong>Configure the compiler:</strong> Click the <strong>Menu</strong> button (top left, three horizontal lines)</li>
+                <li>In the menu, find <strong>Compiler</strong> and select either <strong>XeLaTeX</strong> or <strong>LuaLaTeX</strong> from the dropdown
+                    <div class="warning">
+                        <strong>Important:</strong> Do NOT use pdfLaTeX - it won't compile the interlinear examples correctly and may not support IPA characters.
+                    </div>
+                </li>
+                <li>Upload the <a href="https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/interlinear/interlinear.sty" target="_blank">interlinear.sty</a> 
+                    file to your project (click "Upload" button in the file list)</li>
+                <li>Add <code>\usepackage{interlinear}</code> to your document preamble</li>
+                <li>If using IPA characters, also add <code>\usepackage{fontspec}</code> to your preamble</li>
+                <li>Paste your converted LaTeX code from the FLEx Interlinear Copy Assistant into your document</li>
+                <li>Click <strong>Recompile</strong> to see your formatted interlinear examples</li>
+            </ol>
+
+            <div class="info">
+                <strong>Tip:</strong> Overleaf automatically saves your work and shows compilation errors in real-time, 
+                making it easier to troubleshoot any formatting issues with your interlinear examples.
+            </div>
+
             <h3>Using XLingPaper Output</h3>
             
             <div class="warning">
