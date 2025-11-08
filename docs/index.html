@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLEx Interlinear Copy Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🔤 FLEx Interlinear Copy Assistant</h1>
+            <p class="tagline">Streamline your linguistic interlinear glossed text workflow</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="user-guide.html">User Guide</a></li>
+                <li><a href="limitations.html">Known Issues</a></li>
+                <li><a href="https://github.com/rulingAnts/flex-interlinear-copy" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h2>What is FLEx Interlinear Copy Assistant?</h2>
+            <p>
+                A cross-platform application that streamlines the process of converting linguistic interlinear glossed text (IGT) data 
+                from <strong>FieldWorks Language Explorer (FLEx)</strong> or spreadsheets into common publication formats.
+            </p>
+            <p>
+                The tool cleans raw TSV (Tab-Separated Values) data and provides one-click conversion to <strong>LaTeX</strong>, 
+                <strong>XML</strong>, and <strong>HTML</strong> formats.
+            </p>
+        </section>
+
+        <section class="downloads">
+            <h2>📥 Download</h2>
+            
+            <div class="download-options">
+                <div class="download-card">
+                    <h3>🪟 Windows</h3>
+                    <p>Portable executable - no installation required!</p>
+                    <a href="https://github.com/rulingAnts/flex-interlinear-copy/releases/download/v1.0.0/FLEx.Interlinear.Copy.Assistant.exe" class="download-button">
+                        Download for Windows (v1.0.0)
+                    </a>
+                    <p class="file-info">~41 MB • Windows 7/8/10/11 (64-bit)</p>
+                </div>
+
+                <div class="download-card">
+                    <h3>🍎 macOS / 🐧 Linux</h3>
+                    <p>Run from Python source code</p>
+                    <div class="code-instructions">
+                        <p><strong>Requirements:</strong> Python 3.x</p>
+                        <ol>
+                            <li>Install Python dependency:
+                                <code>pip install pyperclip</code>
+                            </li>
+                            <li>Download the script:
+                                <a href="https://raw.githubusercontent.com/rulingAnts/flex-interlinear-copy/main/flex-interlinear-copy.py">flex-interlinear-copy.py</a>
+                            </li>
+                            <li>Run the application:
+                                <code>python3 flex-interlinear-copy.py</code>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="latest-release">
+                <p>
+                    <strong>Latest Release:</strong> v1.0.0 • 
+                    <a href="https://github.com/rulingAnts/flex-interlinear-copy/releases/latest" target="_blank">View all releases</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>🌟 Key Features</h2>
+            
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>📋 Clipboard Integration</h3>
+                    <p>Directly paste and process TSV data copied from FLEx or spreadsheets.</p>
+                </div>
+
+                <div class="feature">
+                    <h3>🔄 Multiple Output Formats</h3>
+                    <p>Convert to LaTeX (XeTeX with gb4e/ling-example packages), XLingPaper XML, or clean HTML markup.</p>
+                </div>
+
+                <div class="feature">
+                    <h3>🧹 Automatic Data Cleaning</h3>
+                    <p>Removes blank columns, handles numbered examples, and copies morpheme break markers automatically.</p>
+                </div>
+
+                <div class="feature">
+                    <h3>✏️ Manual Editor</h3>
+                    <p>Built-in spreadsheet-like editor for creating or fine-tuning interlinear examples.</p>
+                </div>
+
+                <div class="feature">
+                    <h3>💻 Cross-Platform</h3>
+                    <p>Works on Windows (portable .exe), macOS, and Linux (via Python).</p>
+                </div>
+
+                <div class="feature">
+                    <h3>🆓 Free & Open Source</h3>
+                    <p>Licensed under GNU AGPL v3. Modify and share freely!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-start">
+            <h2>🚀 Quick Start</h2>
+            <ol class="steps">
+                <li>
+                    <strong>Copy your interlinear data</strong> from FLEx or a spreadsheet (Ctrl+C or Cmd+C)
+                </li>
+                <li>
+                    <strong>Launch the application</strong> - the data will automatically appear in the preview
+                </li>
+                <li>
+                    <strong>Select your target format</strong> from the dropdown menu (e.g., LaTeX, XML, HTML)
+                </li>
+                <li>
+                    <strong>Configure options</strong> like removing FLEx labels or morpheme alignment
+                </li>
+                <li>
+                    <strong>Click "Convert and Re-Copy!"</strong> - the formatted output is automatically copied to your clipboard
+                </li>
+                <li>
+                    <strong>Paste into your document</strong> (Ctrl+V or Cmd+V)
+                </li>
+            </ol>
+            <p class="cta">
+                <a href="user-guide.html" class="button">Read the Full User Guide →</a>
+            </p>
+        </section>
+
+        <section class="use-cases">
+            <h2>👥 Who Should Use This Tool?</h2>
+            <ul>
+                <li><strong>Linguists and Researchers</strong> preparing academic papers with interlinear examples</li>
+                <li><strong>Language Documenters</strong> working with FieldWorks Language Explorer (FLEx)</li>
+                <li><strong>Students</strong> writing linguistics assignments or theses</li>
+                <li><strong>Publishers</strong> needing clean, formatted interlinear glossed text</li>
+                <li><strong>Anyone</strong> working with morpheme-by-morpheme linguistic annotations</li>
+            </ul>
+        </section>
+
+        <section class="support">
+            <h2>🤝 Get Help & Contribute</h2>
+            <div class="support-grid">
+                <div class="support-card">
+                    <h3>📖 Documentation</h3>
+                    <p>Check out our <a href="user-guide.html">User Guide</a> for detailed instructions.</p>
+                </div>
+                <div class="support-card">
+                    <h3>🐛 Report Issues</h3>
+                    <p>Found a bug? <a href="https://github.com/rulingAnts/flex-interlinear-copy/issues" target="_blank">Open an issue</a> on GitHub.</p>
+                </div>
+                <div class="support-card">
+                    <h3>💡 Contribute</h3>
+                    <p>We welcome contributions! See our <a href="https://github.com/rulingAnts/flex-interlinear-copy" target="_blank">GitHub repository</a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                <strong>FLEx Interlinear Copy Assistant</strong> • 
+                Copyright © 2025 Seth Johnston • 
+                Licensed under <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank">GNU AGPL v3</a>
+            </p>
+            <p class="credits">
+                Built with collaboration between human direction and AI assistance
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

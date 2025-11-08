@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide - FLEx Interlinear Copy Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📖 User Guide</h1>
+            <p class="tagline">Complete instructions for using FLEx Interlinear Copy Assistant</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user-guide.html" class="active">User Guide</a></li>
+                <li><a href="limitations.html">Known Issues</a></li>
+                <li><a href="https://github.com/rulingAnts/flex-interlinear-copy" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="getting-started">
+            <h2>Getting Started</h2>
+            
+            <h3>Installation</h3>
+            
+            <h4>Windows Users</h4>
+            <ol>
+                <li>Download <code>FLEx.Interlinear.Copy.Assistant.exe</code> from the <a href="https://github.com/rulingAnts/flex-interlinear-copy/releases/latest" target="_blank">latest release</a></li>
+                <li>No installation required - just double-click the .exe file to run</li>
+                <li>Windows may show a security warning for downloaded files - click "More info" then "Run anyway"</li>
+            </ol>
+
+            <h4>macOS and Linux Users</h4>
+            <ol>
+                <li>Ensure Python 3.x is installed on your system</li>
+                <li>Install the required dependency:
+                    <br><code>pip install pyperclip</code>
+                </li>
+                <li>Download <a href="https://raw.githubusercontent.com/rulingAnts/flex-interlinear-copy/main/flex-interlinear-copy.py">flex-interlinear-copy.py</a></li>
+                <li>Run the script:
+                    <br><code>python3 flex-interlinear-copy.py</code>
+                </li>
+            </ol>
+
+            <div class="info">
+                <strong>Note for macOS users:</strong> You may need to grant clipboard access permissions when first running the application.
+            </div>
+        </section>
+
+        <section id="basic-workflow">
+            <h2>Basic Workflow</h2>
+            
+            <p>The typical workflow for using this tool follows these steps:</p>
+
+            <h3>Step 1: Copy Your Data</h3>
+            <p>
+                In FLEx or your spreadsheet application, select and copy the interlinear data you want to convert.
+                The data should be in tab-separated format with rows like:
+            </p>
+            <ul>
+                <li><strong>Word</strong> - the source language words</li>
+                <li><strong>Morphemes</strong> - morphological breakdown with boundary markers (-, =, .)</li>
+                <li><strong>Lex. Gloss</strong> - glosses for each morpheme</li>
+                <li><strong>Word Gloss</strong> - word-level glosses</li>
+                <li><strong>Free</strong> - free translation (full sentence)</li>
+            </ul>
+
+            <h3>Step 2: Launch the Application</h3>
+            <p>
+                When you start the application, it automatically pastes the current clipboard contents into the preview window.
+                You'll see your data displayed in a text box at the top of the window.
+            </p>
+
+            <h3>Step 3: Select Output Format</h3>
+            <p>Use the dropdown menu to choose your desired output format:</p>
+            
+            <h4>LaTeX Options:</h4>
+            <ul>
+                <li><strong>Single Example</strong> - For standalone numbered examples</li>
+                <li><strong>New List Example</strong> - Creates a new list environment with sub-examples</li>
+                <li><strong>Add to Existing List Example</strong> - Adds an item to an existing list</li>
+            </ul>
+
+            <h4>XLingPaper Options:</h4>
+            <ul>
+                <li><strong>Single Interlinear Example</strong> - Standard example format</li>
+                <li><strong>List Interlinear - Create New List</strong> - New list with examples</li>
+                <li><strong>List Interlinear - Add Item to Existing List</strong> - Add to existing list</li>
+            </ul>
+
+            <h4>Other Formats:</h4>
+            <ul>
+                <li><strong>Spreadsheet App</strong> - Returns clean TSV data</li>
+                <li><strong>HTML Table</strong> - For web display or wikis</li>
+            </ul>
+
+            <h3>Step 4: Configure Options</h3>
+            <p>Use the checkboxes to customize the output:</p>
+            <ul>
+                <li><strong>Enable Predefined LaTeX Styles</strong> - Use custom LaTeX commands like <code>\extitle{}</code> instead of built-in formatting</li>
+                <li><strong>Remove Column breaks between Morphemes</strong> - Enforces word alignment instead of morpheme alignment (checked by default)</li>
+                <li><strong>Remove FLEx row labels</strong> - Removes labels like "Word", "Morphemes", etc. from the output (checked by default)</li>
+            </ul>
+
+            <h3>Step 5: Convert and Copy</h3>
+            <p>
+                Click the <strong>"Convert and Re-Copy!"</strong> button. The converted output is automatically
+                copied to your clipboard, ready to paste into your document.
+            </p>
+
+            <h3>Step 6: Paste into Your Document</h3>
+            <p>
+                Go to your LaTeX editor, Word processor, or XML editor and paste (Ctrl+V or Cmd+V).
+                The formatted interlinear text will be inserted.
+            </p>
+        </section>
+
+        <section id="manual-entry">
+            <h2>Manual Entry Mode</h2>
+            
+            <p>
+                If you don't have data in FLEx, or want to create examples from scratch, use the manual entry feature:
+            </p>
+
+            <ol>
+                <li>Click <strong>"Manually Enter Interlinear Example..."</strong> button</li>
+                <li>Type or paste a source-language sentence in the dialog that appears</li>
+                <li>A spreadsheet-like editor opens with your sentence split into cells</li>
+                <li>Add rows for morphemes, glosses, etc. using the <strong>"Add Row"</strong> button</li>
+                <li>Use <strong>"Split Cell"</strong> to divide a cell at the cursor position</li>
+                <li>Use <strong>"Delete Row"</strong> to remove unwanted rows</li>
+                <li>Enter the free translation in the text field at the bottom</li>
+                <li>Click <strong>"Done"</strong> when finished</li>
+            </ol>
+
+            <div class="warning">
+                <strong>Known Issue:</strong> The manual editor has some bugs and may not work reliably in all cases.
+                This is a known limitation being actively worked on.
+            </div>
+        </section>
+
+        <section id="format-specific">
+            <h2>Format-Specific Instructions</h2>
+
+            <h3>Using LaTeX Output</h3>
+            
+            <h4>Prerequisites:</h4>
+            <ul>
+                <li>Download the <a href="https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/interlinear/interlinear.sty" target="_blank">MIT interlinear package</a></li>
+                <li>Include <code>\usepackage{interlinear}</code> in your LaTeX preamble</li>
+                <li>You may need to specify fonts that support IPA characters (e.g., <code>\usepackage{fontspec}</code> with XeLaTeX)</li>
+            </ul>
+
+            <h4>Optional: Define Custom Styles</h4>
+            <p>If you enable "Predefined LaTeX Styles", define these commands in your preamble:</p>
+            <pre><code>\newcommand{\extitle}[1]{\textbf{\underline{#1}}}
+\newcommand{\exsubtitle}[1]{\textit{#1}}
+\newcommand{\txtref}[1]{\hfill\textit{#1}}</code></pre>
+
+            <h4>Compile with XeLaTeX or LuaLaTeX:</h4>
+            <p>
+                The generated LaTeX code uses <code>\glll</code> (or <code>\gll</code>) commands which work best
+                with XeLaTeX or LuaLaTeX compilers.
+            </p>
+
+            <h3>Using XLingPaper Output</h3>
+            
+            <div class="warning">
+                <strong>Important:</strong> XLingPaper does not allow pasting code into the graphical editor.
+            </div>
+
+            <h4>How to Insert XLingPaper Code:</h4>
+            <ol>
+                <li>In XLingPaper, click where you want to insert the example (in the graphical view)</li>
+                <li>Go to <strong>View → XML Source</strong></li>
+                <li>Carefully paste the XML code in the correct location</li>
+                <li>Be cautious - incorrect XML placement can corrupt your document</li>
+                <li>Use Ctrl+Z / Edit → Undo if something goes wrong</li>
+            </ol>
+
+            <div class="info">
+                <strong>Tip:</strong> If you're new to XML, read a basic XML tutorial before using this feature to understand
+                proper tag placement and document structure.
+            </div>
+
+            <h3>Using HTML Output</h3>
+            
+            <p>
+                The HTML output creates a clean table suitable for:
+            </p>
+            <ul>
+                <li>Pasting into wikis (Wikipedia, MediaWiki, etc.)</li>
+                <li>Web content management systems</li>
+                <li>HTML email</li>
+                <li>Blog posts</li>
+            </ul>
+
+            <p>
+                The generated table uses basic HTML with inline styles, making it compatible with most platforms.
+                FLEx row labels are automatically bolded.
+            </p>
+        </section>
+
+        <section id="data-processing">
+            <h2>Understanding Data Processing</h2>
+
+            <h3>Automatic Cleaning</h3>
+            <p>The tool automatically performs several cleaning operations:</p>
+
+            <h4>1. Removing Blank Columns</h4>
+            <p>
+                Columns that are completely empty across all rows are automatically removed to create cleaner output.
+            </p>
+
+            <h4>2. Handling Numbered Examples</h4>
+            <p>
+                If your data includes example numbers in the first column, the tool attempts to handle them
+                intelligently, preserving them where appropriate.
+            </p>
+
+            <h4>3. Morpheme Break Markers</h4>
+            <p>
+                The tool recognizes morpheme boundary markers (<code>-</code>, <code>=</code>, <code>_</code>, <code>.</code>)
+                and can:
+            </p>
+            <ul>
+                <li>Copy them from the Morphemes row to the Lex. Gloss row automatically</li>
+                <li>Collapse morpheme breaks when "Remove Column breaks" is enabled</li>
+            </ul>
+
+            <h4>4. Free Translation Formatting</h4>
+            <p>
+                Rows starting with "Free" or surrounded by single quotes are automatically recognized as
+                free translations and formatted appropriately for each output format.
+            </p>
+
+            <h3>FLEx Label Processing</h3>
+            <p>
+                When "Remove FLEx row labels" is checked, the tool:
+            </p>
+            <ul>
+                <li>Removes the label column (Word, Morphemes, etc.) from non-Free rows</li>
+                <li>Removes the "Free" prefix from the translation row</li>
+                <li>Adds quotation marks around the free translation</li>
+            </ul>
+        </section>
+
+        <section id="tips">
+            <h2>Tips and Best Practices</h2>
+
+            <h3>For Best Results:</h3>
+            <ul>
+                <li><strong>Check your data</strong> - Review the preview window before converting</li>
+                <li><strong>Use consistent formatting</strong> - Keep morpheme markers and spacing consistent in your source data</li>
+                <li><strong>Test with a small example first</strong> - Make sure your workflow is correct before processing many examples</li>
+                <li><strong>Keep the app open</strong> - You can paste and convert multiple examples without restarting</li>
+                <li><strong>Save your work</strong> - Always save documents after pasting converted examples</li>
+            </ul>
+
+            <h3>Keyboard Shortcuts:</h3>
+            <ul>
+                <li><strong>Ctrl+C / Cmd+C</strong> - Copy in FLEx or spreadsheet</li>
+                <li><strong>Paste Button</strong> - Refresh clipboard data in the app</li>
+                <li><strong>Ctrl+V / Cmd+V</strong> - Paste converted output into your document</li>
+            </ul>
+
+            <h3>Troubleshooting:</h3>
+            <ul>
+                <li><strong>Data doesn't appear?</strong> - Click "Paste from Clipboard" button manually</li>
+                <li><strong>Weird formatting?</strong> - Check that your source data uses tabs (not spaces) between columns</li>
+                <li><strong>Missing morpheme markers?</strong> - Ensure markers are in the Morphemes row, not the Gloss row</li>
+                <li><strong>LaTeX won't compile?</strong> - Make sure you have the interlinear package installed and are using XeLaTeX</li>
+            </ul>
+        </section>
+
+        <section id="examples">
+            <h2>Example Workflow</h2>
+
+            <h3>Converting a FLEx Example to LaTeX</h3>
+
+            <p><strong>Step-by-step example:</strong></p>
+
+            <ol>
+                <li>In FLEx, select your interlinear text and copy it (Ctrl+C)</li>
+                <li>Launch FLEx Interlinear Copy Assistant</li>
+                <li>Your data appears in the preview window</li>
+                <li>Select "LaTeX - MIT interlinear package - Single Example" from dropdown</li>
+                <li>Check "Remove FLEx row labels" (should be on by default)</li>
+                <li>Check "Remove Column breaks between Morphemes" (should be on by default)</li>
+                <li>Click "Convert and Re-Copy!"</li>
+                <li>Open your LaTeX editor</li>
+                <li>Paste (Ctrl+V) where you want the example to appear</li>
+                <li>Compile with XeLaTeX or LuaLaTeX</li>
+            </ol>
+
+            <p>
+                The output will be a properly formatted LaTeX interlinear example ready to compile!
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                <strong>FLEx Interlinear Copy Assistant</strong> • 
+                Copyright © 2025 Seth Johnston • 
+                Licensed under <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank">GNU AGPL v3</a>
+            </p>
+            <p class="credits">
+                Built with collaboration between human direction and AI assistance
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
