@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Known Issues & Limitations - FLEx Interlinear Copy Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚠️ Known Issues & Limitations</h1>
+            <p class="tagline">Current limitations and development priorities</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user-guide.html">User Guide</a></li>
+                <li><a href="limitations.html" class="active">Known Issues</a></li>
+                <li><a href="https://github.com/rulingAnts/flex-interlinear-copy" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>
+                FLEx Interlinear Copy Assistant is actively being developed and improved. While the core functionality
+                works well, there are some known limitations and features that are being worked on.
+            </p>
+            <p>
+                This page documents current issues and the development roadmap. We welcome contributions from the community
+                to help address these limitations!
+            </p>
+        </section>
+
+        <section id="current-limitations">
+            <h2>Current Limitations</h2>
+
+            <div class="error">
+                <h3>🔴 Single Example Processing Only</h3>
+                <p><strong>Impact:</strong> High</p>
+                <p>
+                    <strong>Description:</strong> The application currently processes only one interlinear example 
+                    (one sentence) per clipboard paste. You cannot copy and paste multiple examples at once.
+                </p>
+                <p>
+                    <strong>Workaround:</strong> Process examples one at a time. Copy and convert each example individually.
+                </p>
+                <p>
+                    <strong>Status:</strong> This is a high-priority feature request. We are actively seeking contributors
+                    to implement multi-example clipboard support.
+                </p>
+            </div>
+
+            <div class="error">
+                <h3>🔴 Buggy Manual Editor</h3>
+                <p><strong>Impact:</strong> High for manual entry users</p>
+                <p>
+                    <strong>Description:</strong> The built-in manual interlinear editor has several known bugs and
+                    reliability issues:
+                </p>
+                <ul>
+                    <li>Cell splitting may not work correctly in all situations</li>
+                    <li>Row deletion can sometimes cause layout issues</li>
+                    <li>Data may be lost if not careful with edits</li>
+                    <li>The interface can become unresponsive with complex edits</li>
+                </ul>
+                <p>
+                    <strong>Workaround:</strong> Use FLEx or a spreadsheet application to prepare your data instead
+                    of relying on the manual editor. Only use the manual editor for very simple examples.
+                </p>
+                <p>
+                    <strong>Status:</strong> A complete overhaul of the manual editor is a major development target.
+                    Contributions are welcome!
+                </p>
+            </div>
+
+            <div class="warning">
+                <h3>🟡 No Automatic Text Reference Capture</h3>
+                <p><strong>Impact:</strong> Medium</p>
+                <p>
+                    <strong>Description:</strong> The tool does not automatically detect or parse text source abbreviations
+                    and line numbers (e.g., <code>TXT:12a</code>) from the input data.
+                </p>
+                <p>
+                    <strong>Workaround:</strong> Manually add text references to your LaTeX or XML output by editing
+                    the commented lines in the generated code (e.g., <code>%\txtref{TxtRf\_\#}</code>).
+                </p>
+                <p>
+                    <strong>Status:</strong> This feature is planned for a future release. The logic needs to be 
+                    implemented to automatically detect and parse reference information from FLEx output.
+                </p>
+            </div>
+
+            <div class="warning">
+                <h3>🟡 MS Word MathML Feature Disabled</h3>
+                <p><strong>Impact:</strong> Medium for Word users</p>
+                <p>
+                    <strong>Description:</strong> The Microsoft Word MathML output feature is currently disabled in
+                    the GUI due to implementation challenges:
+                </p>
+                <ul>
+                    <li>The feature is not accessible on macOS (Windows only)</li>
+                    <li>Requires complex platform-specific clipboard APIs</li>
+                    <li>MathML is difficult to work with outside of Word</li>
+                    <li>The implementation needs significant work to be reliable</li>
+                </ul>
+                <p>
+                    <strong>Workaround:</strong> Use HTML table output and paste into Word, or use LaTeX and convert
+                    to Word format using pandoc or similar tools.
+                </p>
+                <p>
+                    <strong>Status:</strong> We are researching a robust Windows-specific implementation. This feature
+                    may remain Windows-only due to technical constraints.
+                </p>
+            </div>
+
+            <div class="warning">
+                <h3>🟡 No Lightweight Windows Installer</h3>
+                <p><strong>Impact:</strong> Low to Medium</p>
+                <p>
+                    <strong>Description:</strong> The Windows version is distributed as a large portable executable
+                    (~41 MB) rather than a lightweight installer that downloads dependencies on-demand.
+                </p>
+                <p>
+                    <strong>Current State:</strong> The portable .exe works but is large because it includes Python
+                    and all dependencies bundled together.
+                </p>
+                <p>
+                    <strong>Future Goal:</strong> Create a Windows installer (using NSIS or similar) under 25 MB that:
+                </p>
+                <ul>
+                    <li>Downloads and installs Python to the app directory</li>
+                    <li>Installs dependencies locally</li>
+                    <li>Creates a start menu shortcut</li>
+                    <li>Can be hosted directly in GitHub repository</li>
+                </ul>
+                <p>
+                    <strong>Status:</strong> This is a lower priority enhancement. The current portable .exe works fine,
+                    but a smaller installer would be more user-friendly.
+                </p>
+            </div>
+        </section>
+
+        <section id="platform-specific">
+            <h2>Platform-Specific Issues</h2>
+
+            <h3>Windows</h3>
+            <ul>
+                <li><strong>Security Warnings:</strong> Windows Defender may show warnings for the downloaded .exe file
+                    because it's not signed with a certificate. Click "More info" → "Run anyway" to proceed.</li>
+                <li><strong>File Size:</strong> The portable executable is quite large (~41 MB) due to bundled dependencies.</li>
+            </ul>
+
+            <h3>macOS</h3>
+            <ul>
+                <li><strong>No Native Binary:</strong> macOS users must run from Python source code. No .app bundle is provided.</li>
+                <li><strong>Clipboard Permissions:</strong> You may need to grant clipboard access permissions on first run.</li>
+                <li><strong>Python Version:</strong> Make sure you're using Python 3.x, not the system Python 2.7 (if present).</li>
+                <li><strong>Word MathML:</strong> The MS Word MathML feature is completely unavailable on macOS.</li>
+            </ul>
+
+            <h3>Linux</h3>
+            <ul>
+                <li><strong>Clipboard Dependencies:</strong> The <code>pyperclip</code> library may require additional system
+                    packages like <code>xclip</code> or <code>xsel</code> on some Linux distributions.</li>
+                <li><strong>No Native Package:</strong> No .deb, .rpm, or AppImage is currently provided.</li>
+            </ul>
+        </section>
+
+        <section id="compatibility">
+            <h2>Compatibility Notes</h2>
+
+            <h3>FLEx Versions</h3>
+            <p>
+                This tool has been primarily tested with recent versions of FieldWorks Language Explorer (FLEx 9.x).
+                It should work with TSV output from older versions, but this is not guaranteed.
+            </p>
+
+            <h3>LaTeX Distributions</h3>
+            <p>
+                The LaTeX output is designed for:
+            </p>
+            <ul>
+                <li><strong>Recommended:</strong> XeLaTeX or LuaLaTeX (for Unicode and font support)</li>
+                <li><strong>May work:</strong> pdfLaTeX (but with limited font support for IPA characters)</li>
+                <li><strong>Required Package:</strong> MIT interlinear package (gb4e-based)</li>
+            </ul>
+
+            <h3>XLingPaper</h3>
+            <p>
+                XML output is designed for XLingPaper. The code structure should match XLingPaper's XML schema,
+                but you must manually paste it into the XML source view (not the graphical editor).
+            </p>
+
+            <h3>Spreadsheet Applications</h3>
+            <p>
+                TSV output should work with:
+            </p>
+            <ul>
+                <li>Microsoft Excel</li>
+                <li>Google Sheets</li>
+                <li>LibreOffice Calc</li>
+                <li>Apple Numbers</li>
+            </ul>
+        </section>
+
+        <section id="development-priorities">
+            <h2>Major Development Targets</h2>
+            <p>
+                These are the high-priority features and fixes we're actively seeking contributors to implement:
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Priority</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Multi-Example Clipboard Support</strong></td>
+                        <td>🔴 High</td>
+                        <td>Allow copying and pasting multiple interlinear examples at once from FLEx or spreadsheets.</td>
+                        <td>Seeking contributors</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Automatic Text Reference Capture</strong></td>
+                        <td>🔴 High</td>
+                        <td>Automatically detect and parse text source abbreviation and line numbers (e.g., TXT:12a).</td>
+                        <td>Seeking contributors</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manual Editor Overhaul</strong></td>
+                        <td>🔴 High</td>
+                        <td>Fix bugs and improve usability of the built-in interlinear editor.</td>
+                        <td>Seeking contributors</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MS Word MathML Implementation</strong></td>
+                        <td>🟡 Medium</td>
+                        <td>Research and implement robust Windows-specific MathML output for Word documents.</td>
+                        <td>Research phase</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lightweight Windows Installer</strong></td>
+                        <td>🟢 Low</td>
+                        <td>Create an NSIS-based installer under 25MB that downloads dependencies on-demand.</td>
+                        <td>Future enhancement</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="reporting">
+            <h2>Reporting Issues</h2>
+            <p>
+                Found a bug not listed here? Please help us improve the tool by reporting it!
+            </p>
+
+            <h3>How to Report an Issue:</h3>
+            <ol>
+                <li>Go to the <a href="https://github.com/rulingAnts/flex-interlinear-copy/issues" target="_blank">GitHub Issues page</a></li>
+                <li>Click "New Issue"</li>
+                <li>Provide a clear description of the problem</li>
+                <li>Include:
+                    <ul>
+                        <li>Your operating system and version</li>
+                        <li>Steps to reproduce the issue</li>
+                        <li>Expected behavior vs. actual behavior</li>
+                        <li>Screenshots if applicable</li>
+                        <li>Sample input data (if possible)</li>
+                    </ul>
+                </li>
+                <li>Submit the issue</li>
+            </ol>
+
+            <h3>Before Reporting:</h3>
+            <ul>
+                <li>Check this page to see if it's a known issue</li>
+                <li>Search existing GitHub issues to avoid duplicates</li>
+                <li>Try the suggested workarounds first</li>
+                <li>Make sure you're using the latest version</li>
+            </ul>
+        </section>
+
+        <section id="contributing">
+            <h2>Contributing Solutions</h2>
+            <p>
+                We welcome contributions from developers who can help address these limitations!
+            </p>
+
+            <h3>How to Contribute:</h3>
+            <ol>
+                <li>Fork the <a href="https://github.com/rulingAnts/flex-interlinear-copy" target="_blank">GitHub repository</a></li>
+                <li>Choose an issue to work on (or create a new one)</li>
+                <li>Create a feature branch</li>
+                <li>Implement your solution</li>
+                <li>Test thoroughly</li>
+                <li>Submit a pull request with a clear description</li>
+            </ol>
+
+            <h3>Areas Where Help is Needed:</h3>
+            <ul>
+                <li><strong>Python/Tkinter Development:</strong> For GUI improvements and manual editor fixes</li>
+                <li><strong>Clipboard API Expertise:</strong> For multi-example support and platform-specific features</li>
+                <li><strong>LaTeX Knowledge:</strong> For improving output formatting and compatibility</li>
+                <li><strong>XML/XLingPaper Experience:</strong> For enhancing XML output generation</li>
+                <li><strong>Windows Installer Development:</strong> For creating an NSIS-based installer</li>
+                <li><strong>Documentation:</strong> Improving user guides and code documentation</li>
+                <li><strong>Testing:</strong> Testing on different platforms and with different data sources</li>
+            </ul>
+
+            <div class="info">
+                <strong>Note:</strong> This project was developed through collaboration between human direction and AI
+                assistance. Contributors should be comfortable working with AI-generated code and focusing on
+                testing and refinement.
+            </div>
+        </section>
+
+        <section id="workarounds">
+            <h2>General Workarounds & Tips</h2>
+
+            <h3>If the App Crashes or Freezes:</h3>
+            <ul>
+                <li>Try pasting simpler/smaller examples</li>
+                <li>Avoid using the manual editor for complex examples</li>
+                <li>Restart the application</li>
+                <li>Check that your clipboard data is valid TSV format</li>
+            </ul>
+
+            <h3>If Output Formatting is Wrong:</h3>
+            <ul>
+                <li>Verify your input data uses tabs (not spaces) as separators</li>
+                <li>Check that morpheme markers are in the correct row</li>
+                <li>Try different checkbox options (remove labels, remove column breaks)</li>
+                <li>Manually edit the output if needed - it's just text!</li>
+            </ul>
+
+            <h3>If Clipboard Operations Don't Work:</h3>
+            <ul>
+                <li>Grant clipboard permissions to the application (macOS)</li>
+                <li>Install xclip or xsel on Linux</li>
+                <li>Try clicking "Paste from Clipboard" manually</li>
+                <li>Restart the application</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                <strong>FLEx Interlinear Copy Assistant</strong> • 
+                Copyright © 2025 Seth Johnston • 
+                Licensed under <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank">GNU AGPL v3</a>
+            </p>
+            <p class="credits">
+                Built with collaboration between human direction and AI assistance
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
