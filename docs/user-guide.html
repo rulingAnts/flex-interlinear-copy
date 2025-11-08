@@ -150,72 +150,196 @@
         <section id="format-specific">
             <h2>Format-Specific Instructions</h2>
 
-            <h3>Using LaTeX Output</h3>
+            <h3>📝 Recommended: Using Overleaf.com (Online LaTeX Editor)</h3>
             
-            <h4>Prerequisites:</h4>
-            <ul>
-                <li>Download the <a href="https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/interlinear/interlinear.sty" target="_blank">MIT interlinear package</a></li>
-                <li>Include <code>\usepackage{interlinear}</code> in your LaTeX preamble</li>
-                <li>You may need to specify fonts that support IPA characters (e.g., <code>\usepackage{fontspec}</code> with XeLaTeX)</li>
-            </ul>
+            <p>
+                <strong><a href="https://www.overleaf.com" target="_blank">Overleaf.com</a> is the easiest way to use LaTeX output from this tool.</strong> 
+                It's a free online editor that requires no software installation and automatically handles compilation. 
+                Follow these detailed steps:
+            </p>
 
-            <h4>Optional: Define Custom Styles</h4>
-            <p>If you enable "Predefined LaTeX Styles", define these commands in your preamble:</p>
-            <pre><code>\newcommand{\extitle}[1]{\textbf{\underline{#1}}}
+            <h4>Step 1: Create or Open Your Project</h4>
+            <ol>
+                <li>Go to <a href="https://www.overleaf.com" target="_blank">www.overleaf.com</a> and sign in (or create a free account)</li>
+                <li>Either create a <strong>New Project</strong> (green button) or open an existing project</li>
+                <li>If creating new, select "Blank Project" and give it a name</li>
+            </ol>
+
+            <h4>Step 2: ⚙️ Configure the Compiler (CRITICAL)</h4>
+            <div class="warning">
+                <strong>⚠️ IMPORTANT:</strong> You <strong>MUST</strong> change the compiler to XeLaTeX or LuaLaTeX. 
+                The default pdfLaTeX will NOT work with interlinear examples and may not support IPA characters.
+            </div>
+            
+            <ol>
+                <li>Click the <strong>Menu</strong> button in the top-left corner (looks like three horizontal lines ☰)</li>
+                <li>The settings panel opens on the left side of the screen</li>
+                <li>Scroll down to find the <strong>"Compiler"</strong> dropdown menu</li>
+                <li>Click on it and select either:
+                    <ul>
+                        <li><strong>XeLaTeX</strong> (recommended) - better font support</li>
+                        <li><strong>LuaLaTeX</strong> (also works well)</li>
+                    </ul>
+                </li>
+                <li>The menu will automatically save your choice - you'll see "Compiler: XeLaTeX" displayed</li>
+            </ol>
+
+            <h4>Step 3: 📦 Upload the MIT Interlinear Package</h4>
+            <ol>
+                <li>Download the <a href="https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/interlinear/interlinear.sty" target="_blank">interlinear.sty file</a> (right-click → Save As)</li>
+                <li>In Overleaf, look at the left sidebar where your project files are listed</li>
+                <li>Find and click the <strong>"Upload"</strong> icon/button (usually at the top of the file list, looks like an upload arrow ⬆)</li>
+                <li>Select "Project Files" from the dropdown</li>
+                <li>Click "Select files" and choose the <code>interlinear.sty</code> file you downloaded</li>
+                <li>Click "Upload" - the file will appear in your project file list</li>
+            </ol>
+
+            <h4>Step 4: 🔧 Configure Your Document Preamble</h4>
+            <p>In your main <code>.tex</code> file (usually <code>main.tex</code>), add these lines <strong>after</strong> the <code>\documentclass{...}</code> line but <strong>before</strong> <code>\begin{document}</code>:</p>
+            
+            <pre><code>% Required package for interlinear examples
+\usepackage{interlinear}
+
+% Required for IPA characters and special fonts
+\usepackage{fontspec}
+
+% Recommended: Set a font that supports IPA (Charis SIL)
+\setmainfont{Charis SIL}</code></pre>
+
+            <div class="info">
+                <strong>About Charis SIL:</strong> This is a free font designed for linguistic work with excellent IPA character support. 
+                Overleaf has it pre-installed, so just adding <code>\setmainfont{Charis SIL}</code> will work immediately!
+            </div>
+
+            <h4>Step 5 (Optional): Add Custom LaTeX Styles</h4>
+            <p>If you enabled "Predefined LaTeX Styles" in the FLEx Interlinear Copy Assistant, add these commands to your preamble (after the packages):</p>
+            <pre><code>% Custom formatting commands
+\newcommand{\extitle}[1]{\textbf{\underline{#1}}}
 \newcommand{\exsubtitle}[1]{\textit{#1}}
 \newcommand{\txtref}[1]{\hfill\textit{#1}}</code></pre>
 
-            <h4>Compile with XeLaTeX or LuaLaTeX:</h4>
-            <p>
-                The generated LaTeX code uses <code>\glll</code> (or <code>\gll</code>) commands which work best
-                with XeLaTeX or LuaLaTeX compilers.
-            </p>
-
-            <h4>Using Overleaf.com:</h4>
-            <p>
-                <a href="https://www.overleaf.com" target="_blank">Overleaf</a> is a popular online LaTeX editor 
-                that works well with the FLEx Interlinear Copy Assistant output. Here's how to configure it:
-            </p>
-
+            <h4>Step 6: ✂️ Paste Your Interlinear Examples</h4>
             <ol>
-                <li>Create a new project or open an existing one in Overleaf</li>
-                <li><strong>Configure the compiler:</strong> Click the <strong>Menu</strong> button (top left, three horizontal lines)</li>
-                <li>In the menu, find <strong>Compiler</strong> and select either <strong>XeLaTeX</strong> or <strong>LuaLaTeX</strong> from the dropdown
-                    <div class="warning">
-                        <strong>Important:</strong> Do NOT use pdfLaTeX - it won't compile the interlinear examples correctly and may not support IPA characters.
-                    </div>
-                </li>
-                <li>Upload the <a href="https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/interlinear/interlinear.sty" target="_blank">interlinear.sty</a> 
-                    file to your project (click "Upload" button in the file list)</li>
-                <li>Add <code>\usepackage{interlinear}</code> to your document preamble</li>
-                <li>If using IPA characters, also add <code>\usepackage{fontspec}</code> to your preamble</li>
-                <li>Paste your converted LaTeX code from the FLEx Interlinear Copy Assistant into your document</li>
-                <li>Click <strong>Recompile</strong> to see your formatted interlinear examples</li>
+                <li>In the document body (between <code>\begin{document}</code> and <code>\end{document}</code>), place your cursor where you want the example</li>
+                <li>Paste the LaTeX code you copied from FLEx Interlinear Copy Assistant (Ctrl+V or Cmd+V)</li>
+                <li>The code will include <code>\begin{exe}</code>, <code>\ex</code>, <code>\glll</code> or <code>\gll</code> commands, and <code>\end{exe}</code></li>
+            </ol>
+
+            <h4>Step 7: ▶️ Compile and View</h4>
+            <ol>
+                <li>Click the green <strong>"Recompile"</strong> button at the top of the preview pane</li>
+                <li>Wait a few seconds for compilation to complete</li>
+                <li>Your formatted interlinear examples will appear in the PDF preview on the right!</li>
+                <li>If you see errors, they'll appear in red at the bottom - click on them to see details</li>
             </ol>
 
             <div class="info">
-                <strong>Tip:</strong> Overleaf automatically saves your work and shows compilation errors in real-time, 
-                making it easier to troubleshoot any formatting issues with your interlinear examples.
+                <strong>💡 Pro Tips:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Overleaf auto-saves constantly - no need to manually save</li>
+                    <li>Turn on "Auto Compile" (in the Menu) to see updates as you type</li>
+                    <li>Use the "History" feature to revert to earlier versions if needed</li>
+                    <li>Download your project as a ZIP file using Menu → Download → Source</li>
+                </ul>
             </div>
 
-            <h3>Using XLingPaper Output</h3>
+            <h3>🖥️ Using LaTeX on Your Computer (Advanced Users)</h3>
             
+            <p>If you prefer to use LaTeX on your local machine:</p>
+
+            <h4>Prerequisites:</h4>
+            <ul>
+                <li>Install a TeX distribution: <a href="https://www.tug.org/texlive/" target="_blank">TeX Live</a> (Linux/Mac) or <a href="https://miktex.org/" target="_blank">MiKTeX</a> (Windows)</li>
+                <li>Download the <a href="https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/interlinear/interlinear.sty" target="_blank">MIT interlinear package</a> and place it in your project folder</li>
+                <li>Install <a href="https://software.sil.org/charis/" target="_blank">Charis SIL font</a> for IPA character support</li>
+                <li>Compile using <code>xelatex</code> or <code>lualatex</code> command (not <code>pdflatex</code>)</li>
+            </ul>
+
+            <h3>📄 Using XLingPaper (XML Mind Editor)</h3>
+            
+            <p>
+                <strong>XLingPaper</strong> is a specialized XML editor for linguistic papers developed by SIL International. 
+                It uses XML Mind XMLEditor as its underlying editor. 
+                <a href="https://software.sil.org/xlingpaper/" target="_blank">Learn more at SIL's website</a>.
+            </p>
+
             <div class="warning">
-                <strong>Important:</strong> XLingPaper does not allow pasting code into the graphical editor.
+                <strong>⚠️ CRITICAL:</strong> XLingPaper does NOT allow pasting code into the graphical (WYSIWYG) editor. 
+                You <strong>MUST</strong> switch to XML Source view to insert examples.
             </div>
 
-            <h4>How to Insert XLingPaper Code:</h4>
+            <h4>Step 1: 🎯 Position Your Cursor</h4>
             <ol>
-                <li>In XLingPaper, click where you want to insert the example (in the graphical view)</li>
-                <li>Go to <strong>View → XML Source</strong></li>
-                <li>Carefully paste the XML code in the correct location</li>
-                <li>Be cautious - incorrect XML placement can corrupt your document</li>
-                <li>Use Ctrl+Z / Edit → Undo if something goes wrong</li>
+                <li>Open your XLingPaper document in XMLMind</li>
+                <li>In the <strong>graphical view</strong> (default WYSIWYG view), click where you want to insert your interlinear example</li>
+                <li>This could be in a section, a paragraph, or inside an example environment</li>
+                <li>Make note of your location - you'll need to find it in the XML code</li>
+            </ol>
+
+            <h4>Step 2: 🔄 Switch to XML Source View</h4>
+            <ol>
+                <li>Go to the menu bar at the top</li>
+                <li>Click <strong>View → XML Source</strong> (or press the keyboard shortcut if configured)</li>
+                <li>The editor switches to show the raw XML code of your document</li>
+                <li>You'll see tags like <code>&lt;section&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;example&gt;</code>, etc.</li>
+            </ol>
+
+            <h4>Step 3: 🔍 Find the Correct Insertion Point</h4>
+            <ol>
+                <li>Locate the XML tags corresponding to where you clicked in the graphical view</li>
+                <li>Look for appropriate container tags:
+                    <ul>
+                        <li>Inside an <code>&lt;example&gt;</code> tag for a new interlinear</li>
+                        <li>After a <code>&lt;/example&gt;</code> closing tag to add a new example</li>
+                        <li>Inside a <code>&lt;listInterlinear&gt;</code> if adding to an existing list</li>
+                    </ul>
+                </li>
+                <li>Place your cursor at the insertion point (usually just before a closing tag or after content)</li>
+            </ol>
+
+            <h4>Step 4: ✂️ Paste the XLingPaper XML Code</h4>
+            <ol>
+                <li>Paste the XML code you copied from FLEx Interlinear Copy Assistant (Ctrl+V or Cmd+V)</li>
+                <li>The pasted code will include tags like:
+                    <ul>
+                        <li><code>&lt;example&gt;</code>, <code>&lt;interlinear&gt;</code> for single examples</li>
+                        <li><code>&lt;listInterlinear&gt;</code> for list items</li>
+                        <li><code>&lt;lineGroup&gt;</code>, <code>&lt;line&gt;</code>, <code>&lt;wrd&gt;</code> for the interlinear structure</li>
+                        <li><code>&lt;free&gt;</code> for free translations</li>
+                    </ul>
+                </li>
+                <li>Make sure the pasted code is properly nested within the existing XML structure</li>
+            </ol>
+
+            <div class="warning">
+                <strong>⚠️ Be Very Careful:</strong> Incorrect XML placement can corrupt your document! 
+                Make sure opening and closing tags match and are properly nested.
+            </div>
+
+            <h4>Step 5: ✅ Validate and Switch Back</h4>
+            <ol>
+                <li>XMLMind will usually highlight XML syntax errors in red if there are any problems</li>
+                <li>Check that all your opening tags have matching closing tags</li>
+                <li>Go back to <strong>View → Normal View</strong> (or WYSIWYG view) to see the formatted result</li>
+                <li>Your interlinear example should now appear in the document!</li>
+            </ol>
+
+            <h4>Step 6: 💾 Save and Continue</h4>
+            <ol>
+                <li>Save your document (Ctrl+S or Cmd+S)</li>
+                <li>If XMLMind reports validation errors, go back to XML Source view to fix them</li>
+                <li>You can now continue editing or add more examples using the same process</li>
             </ol>
 
             <div class="info">
-                <strong>Tip:</strong> If you're new to XML, read a basic XML tutorial before using this feature to understand
-                proper tag placement and document structure.
+                <strong>💡 XLingPaper Tips:</strong>
+                <ul style="margin-top: 10px;">
+                    <li><strong>Always save before switching views</strong> - this helps prevent data loss</li>
+                    <li><strong>Use Ctrl+Z (Undo)</strong> if something goes wrong</li>
+                    <li>Keep a backup copy of your document before making major changes</li>
+                    <li>Consult the <a href="https://software.sil.org/xlingpaper/documentation/" target="_blank">XLingPaper documentation</a> for XML structure details</li>
+                    <li>If you're new to XML, practice with a test document first</li>
+                </ul>
             </div>
 
             <h3>Using HTML Output</h3>
